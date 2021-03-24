@@ -36,7 +36,10 @@ bot = commands.Bot(command_prefix="$", intents=Intents, description=description)
 
 moderators = [752158397255647252, 580697936493674507]
 approved = [578219178066968576, 752163420962422795]
-channels = [823651597971750922, ]
+channels = [823651597971750922, 824056645205753897]
+guilds = [752157598232477786, 576153162394894376]
+
+
 
 @bot.command()
 @commands.has_any_role(*approved)
@@ -49,6 +52,12 @@ async def tweet(ctx, *, contents):
             url = "https://twitter.com/SusanCummings83/status/" + tweet.id_str
             print(tweet.text)
             await ctx.send(url)
+            if ctx.guild.id == guilds[0]:
+                channel = bot.get_channel(channels[1])
+                await channel.send(url)
+            elif ctx.guild.id == guilds[1]:
+                channel = bot.get_channel(channels[0])
+                await channel.send(url)
         else:
             image = ctx.message.attachments[0]
             url = image.url
@@ -64,6 +73,14 @@ async def tweet(ctx, *, contents):
             url = "https://twitter.com/SusanCummings83/status/" + tweet.id_str
             print(tweet.text)
             await ctx.send(url)
+
+            if ctx.guild.id == guilds[0]:
+                channel = bot.get_channel(channels[1])
+                await channel.send(url)
+            elif ctx.guild.id == guilds[1]:
+                channel = bot.get_channel(channels[0])
+                await channel.send(url)
+            
 
     else:
         await ctx.send(content="You're banned from sending tweets.", delete_after=5)

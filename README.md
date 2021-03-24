@@ -2,7 +2,7 @@
  Discord bot that allows users to tweet, reply, retweet and receive from feed.
 Her prefix is ``$``
 
-She is hosted over at https://discord.gg/9BaK9vns
+She is hosted over at https://discord.gg/P4pMVyTu2s
 
 Tweet - ``$tweet <content>`` - Tweets whatever is in the contents. You dont need quotation marks. There is still a 280 character limit.
 Reply - ``$reply <link> <content>`` - Replies to a linked tweet with a message
