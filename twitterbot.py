@@ -50,7 +50,7 @@ async def tweet(ctx, *, contents):
         if not ctx.message.attachments:
             tweet = api.update_status(status=contents)
             url = "https://twitter.com/SusanCummings83/status/" + tweet.id_str
-            print(tweet.text)
+            print(f"{tweet.text}\n")
             await ctx.send(url)
             if ctx.guild.id == guilds[0]:
                 channel = bot.get_channel(channels[1])
@@ -96,6 +96,13 @@ async def reply(ctx, tweeturl, *, content):
         tweet = api.update_status(status=content, in_reply_to_status_id = tweetid , auto_populate_reply_metadata=True)
         url = "https://twitter.com/SusanCummings83/status/" + tweet.id_str
         await ctx.send(url)
+        print(f"{tweet.text}\n")
+        if ctx.guild.id == guilds[0]:
+            channel = bot.get_channel(channels[1])
+            await channel.send(url)
+        elif ctx.guild.id == guilds[1]:
+            channel = bot.get_channel(channels[0])
+            await channel.send(url)
     else:
         await ctx.send(content="You're banned from sending tweets.", delete_after=5)
 
@@ -119,6 +126,13 @@ async def qrt(ctx, tweeturl, *, content):
         tweet = api.update_status(status=content+"\n"+tweeturl)
         url = "https://twitter.com/SusanCummings83/status/" + tweet.id_str
         await ctx.send(url)
+        print(f"{tweet.text}\n")
+        if ctx.guild.id == guilds[0]:
+            channel = bot.get_channel(channels[1])
+            await channel.send(url)
+        elif ctx.guild.id == guilds[1]:
+            channel = bot.get_channel(channels[0])
+            await channel.send(url)
     else:
         await ctx.send(content="You're banned from sending tweets.", delete_after=5)
 
