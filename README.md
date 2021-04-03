@@ -1,3 +1,5 @@
+# warning
+this bot is not created for easy download and configuration
 # twitterbot
  Discord bot that allows users to tweet, reply, retweet and receive from feed.
 Her prefix is ``$``
